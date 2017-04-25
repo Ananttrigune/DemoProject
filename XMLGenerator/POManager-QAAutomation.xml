@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<a type="POManager-QAAutomation">
+  <bs>
+    <b id="CreateRequestTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyCreateRequest"/>
+      </cs>
+    </b>
+    <b id="HomeTest">
+      <cs>
+        <c Mid="VerifyPageLoad"/>
+        <c Mid="VerifyPage"/>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyAddRole"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeleteRole"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditRole"/>
+      </cs>
+    </b>
+    <b id="LocationMasterTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyaddLocation"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeleteLocation"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditLocation"/>
+      </cs>
+    </b>
+    <b id="LoginTest">
+      <cs>
+        <c Mid="VerifyUnAuthorisedMessage"/>
+        <c Mid="VerifyRegisterLink"/>
+        <c Mid="VerifyRegistrationPageLoad"/>
+        <c Mid="VerifyRegistration"/>
+      </cs>
+    </b>
+    <b id="PageMasterTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyAddPage"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeletePage"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditPage"/>
+      </cs>
+    </b>
+    <b id="PageProfileMapTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyAddpageProfileMap"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeletemapping"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="Verifyeditmapping"/>
+      </cs>
+    </b>
+    <b id="ProfileTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyAddProfile"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeleteProfile"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditProfile"/>
+      </cs>
+    </b>
+    <b id="RoleProfileMapTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyAddMapRoleProfile"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeleteMapping"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditMapping"/>
+      </cs>
+    </b>
+    <b id="StageMasterTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyAddStage"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeleteStage"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditStage"/>
+      </cs>
+    </b>
+    <b id="StageStatusSequenceTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyaddStageStatusSequence"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeleteSequence"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditStage"/>
+      </cs>
+    </b>
+    <b id="StatusMasterTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyAddStatus"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeleteStatus"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditStatus"/>
+      </cs>
+    </b>
+    <b id="VendorMasterTest">
+      <cs>
+        <c Mid="VerifyIsActiveByDefault"/>
+        <c Mid="VerifyaddLocation"/>
+        <c Mid="VerifySearch"/>
+        <c Mid="VerifyDeleteLocation"/>
+        <c Mid="VerifyActiveAfterDelete"/>
+        <c Mid="VerifyEditLocation"/>
+      </cs>
+    </b>
+  </bs>
+</a>
