@@ -1,3 +1,3 @@
 # DemoProject
-My first demo project
-Change 1 in the file
+My Repository
+Project1: XML Generator - Java utility to generate XML from input source of Folder and files
