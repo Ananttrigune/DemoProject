@@ -1,0 +1,18 @@
+2017-05-08 13:30:54,368 INFO  [MaintainLog] ***Service Started*** 
+2017-05-08 13:30:54,383 INFO  [MaintainLog] Opening browser Chrome 
+2017-05-08 13:30:58,733 INFO  [MaintainLog] Setting Page Load time: 30 Control Load time: 30 
+2017-05-08 13:31:02,139 INFO  [MaintainLog] Opened URL: http://civigbasappn03:9090 
+2017-05-08 13:31:02,155 INFO  [MaintainLog] Reading Page Title 
+2017-05-08 13:31:02,192 INFO  [MaintainLog] Page title is correct as expected: Jenkins 
+2017-05-08 13:31:02,210 INFO  [MaintainLog] Closing browser 
+2017-05-08 13:31:06,207 INFO  [MaintainLog] Result of Monitoring service: true 
+2017-05-08 13:31:06,240 INFO  [MaintainLog] ***Service Completed*** 
+2017-05-08 15:32:45,227 INFO  [MaintainLog] ***Service Started*** 
+2017-05-08 15:32:45,243 INFO  [MaintainLog] Opening browser Chrome 
+2017-05-08 15:32:49,063 INFO  [MaintainLog] Setting Page Load time: 30 Control Load time: 30 
+2017-05-08 15:32:51,591 INFO  [MaintainLog] Opened URL: http://civigbasappn03:9090 
+2017-05-08 15:32:51,602 INFO  [MaintainLog] Reading Page Title 
+2017-05-08 15:32:51,630 INFO  [MaintainLog] Page title is correct as expected: Jenkins 
+2017-05-08 15:32:51,642 INFO  [MaintainLog] Closing browser 
+2017-05-08 15:32:55,324 INFO  [MaintainLog] Result of Monitoring service: true 
+2017-05-08 15:32:55,346 INFO  [MaintainLog] ***Service Completed*** 
