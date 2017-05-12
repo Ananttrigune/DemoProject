@@ -1,9 +1,7 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-
 import javax.net.ssl.HttpsURLConnection;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,79 +18,115 @@ public class BrokenLinks {
 	String currentLink;
 	String temp;
 	static WebDriver driver;
+	static String pageTitle;
 
 	static List<WebElement> allURLs = new ArrayList<>();
 	static List<WebElement> allJavaScripts = new ArrayList<>();
 	static List<String> linkAlreadyVisited = new ArrayList<String>();
+	static List<String> pagesVisited = new ArrayList<String>();
 
 	public static void main(String[] args) throws IOException {
-		MaintainLog.logInfo("***Service Started***");
-		launchBrowser();
-		recursiveMode();
-		MaintainLog.logInfo("***Service Completed***");
-	}
-
-	public static void recursiveMode() {
-		getAllURLs();
-		validateURLs();
-		for (WebElement link : allURLs) {
-			if (link.isDisplayed() && !linkAlreadyVisited.contains(link.getText())) {
-				// Add link to list of links already visited
-				linkAlreadyVisited.add(link.getText());
-				System.out.println(link.getText());
-				// Click on the link. This opens a new page
-				link.click();
-				// Call recursiveLinkTest on the new page
-				recursiveMode();
-			}
+		try {
+			MaintainLog.logInfo("***Service Started***");
+			String TestURL = "http://myservices.relianceada.com/launchAMSS.do";
+			launchBrowser(TestURL);
+			recursiveMode();
+			MaintainLog.logInfo("Closing Browser");
+			driver.close();
+			MaintainLog.logInfo("***Service Completed***");
+		} catch (Exception e) {
+			MaintainLog.logError("Exception in main: " + e);
 		}
 	}
 
-	public static void launchBrowser() {
-		// Launch The Chrome Browser
-		// System.setProperty("webdriver.chrome.driver", "C:/QA
-		// Setup/chromedriver_win32/chromedriver.exe");
-		// WebDriver driver = new ChromeDriver();
-		MaintainLog.logInfo("Browser Opening");
-		System.setProperty("webdriver.ie.driver", "C:/QA Setup/IEDriverServer_x32_3.3/IEDriverServer.exe");
-		driver = new InternetExplorerDriver();
+	public static void recursiveMode() {
+		try {
+			getAllURLs();
+			validateURLs();
+			for (WebElement link : allURLs) {
+				String LinkText;
+				if (link.getText() == null) {
+					LinkText = link.getText();
+				} else {
+					LinkText = link.getAttribute("href");
+				}
+				if (link.isDisplayed() && !linkAlreadyVisited.contains(LinkText)) {
+					// Add link to list of links already visited
+					linkAlreadyVisited.add(LinkText);
+					System.out.println(LinkText);
+					MaintainLog.logInfo("Visiting link: " + LinkText);
+					// Click on the link. This opens a new page
+					link.click();
+					recursiveMode();
+				}
+			}
+		} catch (Exception e) {
+			MaintainLog.logError("Exception in recursiveMode: " + e);
+		}
+	}
 
-		MaintainLog.logInfo("Maximising browser");
-		driver.manage().window().maximize();
-		MaintainLog.logInfo("Setting page and control load timeouts");
-		driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
-		driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+	public static void launchBrowser(String TestURL) {
+		try {
+			// Launch The Chrome Browser
+			// System.setProperty("webdriver.chrome.driver", "C:/QA
+			// Setup/chromedriver_win32/chromedriver.exe");
+			// WebDriver driver = new ChromeDriver();
+			MaintainLog.logInfo("Browser Opening");
+			System.setProperty("webdriver.ie.driver", "C:/QA Setup/IEDriverServer_x32_3.3/IEDriverServer.exe");
+			driver = new InternetExplorerDriver();
 
-		// Enter Url
-		String TestURL = "https://myservices.relianceada.com/launchAMSS.do";
-		MaintainLog.logInfo("Opening URL: " + TestURL);
-		driver.get(TestURL);
+			MaintainLog.logInfo("Maximising browser");
+			driver.manage().window().maximize();
+			MaintainLog.logInfo("Setting page and control load timeouts");
+			driver.manage().timeouts().pageLoadTimeout(30, TimeUnit.SECONDS);
+			driver.manage().timeouts().implicitlyWait(15, TimeUnit.SECONDS);
+
+			MaintainLog.logInfo("Opening URL: " + TestURL);
+			driver.get(TestURL);
+		} catch (Exception e) {
+			MaintainLog.logError("Exception in launchBrowser: " + e);
+		}
 	}
 
 	public static void getAllURLs() {
-		// Get all the URLs
-		MaintainLog.logInfo("Opened page title: " + driver.getTitle());
-		allURLs = driver.findElements(By.tagName("a"));
-		MaintainLog.logInfo("All tags on a page: " + allURLs.size());
-		MaintainLog.logInfo("Excluding Java Scripts");
-		// for (int i = 0; i < allURLs.size(); i++) {
-		// excludeJavaScripts(allURLs.get(i), i);
-		// }
-		excludeJavaScripts();
-		MaintainLog.logInfo("All URLs on a page: " + allURLs.size());
+		try {
+			// Get all the URLs
+			pageTitle = driver.getTitle();
+			if (pagesVisited.contains(pageTitle)) {
+				MaintainLog.logInfo("Navigated to already visited page: " + pageTitle);
+			} else {
+				MaintainLog.logInfo("Opened page title: " + pageTitle);
+				// List<WebElement> allURLRemove = new ArrayList<WebElement>(allURLs);
+				// allURLs.removeAll(allURLRemove);
+				allURLs = driver.findElements(By.tagName("a"));
+				MaintainLog.logInfo("All tags on a page: " + allURLs.size());
+				MaintainLog.logInfo("Excluding Java Scripts");
+				// for (int i = 0; i < allURLs.size(); i++) {
+				// excludeJavaScripts(allURLs.get(i), i);
+				// }
+				excludeJavaScripts();
+				MaintainLog.logInfo("All URLs on a page: " + allURLs.size());
+			}
+		} catch (Exception e) {
+			MaintainLog.logError("Exception in getAllURLs: " + e);
+		}
 	}
 
 	public static void validateURLs() {
 		boolean isValid = false;
-		for (int i = 0; i < allURLs.size(); i++) {
-			String myURL = allURLs.get(i).getAttribute("href");
-			// MaintainLog.logInfo("Checking for URL: " + myURL);
-			isValid = isValidURL(myURL);
-			if (isValid == true) {
-				MaintainLog.logInfo("Valid Link:   " + myURL);
-			} else {
-				MaintainLog.logInfo("Invalid Link: " + myURL + "\t\tResponse is: " + getResponseCode(myURL));
+		try {
+			for (int i = 0; i < allURLs.size(); i++) {
+				String myURL = allURLs.get(i).getAttribute("href");
+				// MaintainLog.logInfo("Checking for URL: " + myURL);
+				isValid = isValidURL(myURL);
+				if (isValid == true) {
+					MaintainLog.logInfo("Valid Link:   " + myURL);
+				} else {
+					MaintainLog.logInfo("Invalid Link: " + myURL + "\t\tResponse is: " + getResponseCode(myURL));
+				}
 			}
+		} catch (Exception e) {
+			MaintainLog.logError("Exception in validateURLs: " + e);
 		}
 	}
 
@@ -142,8 +176,8 @@ public class BrokenLinks {
 	}
 
 	public static void excludeJavaScripts() {
-		allJavaScripts = driver.findElements(By.xpath("//a[contains(@href,'javascript')]"));
 		try {
+			allJavaScripts = driver.findElements(By.xpath("//a[contains(@href,'javascript')]"));
 			for (WebElement webEleJavaScript : allJavaScripts) {
 				allURLs.remove(webEleJavaScript);
 			}

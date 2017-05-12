@@ -1,0 +1,10 @@
+2017-05-12 17:55:02,167 INFO  [MaintainLog] ***Service Started*** 
+2017-05-12 17:55:02,182 INFO  [MaintainLog] Browser Opening 
+2017-05-12 17:55:07,035 INFO  [MaintainLog] Maximising browser 
+2017-05-12 17:55:07,097 INFO  [MaintainLog] Setting page and control load timeouts 
+2017-05-12 17:55:07,129 INFO  [MaintainLog] Opening URL: http://myservices.relianceada.com/launchAMSS.do 
+2017-05-12 17:55:13,412 INFO  [MaintainLog] Opened page title: Welcome to Reliance Communications 
+2017-05-12 17:55:13,755 INFO  [MaintainLog] All tags on a page: 39 
+2017-05-12 17:55:13,771 INFO  [MaintainLog] Excluding Java Scripts 
+2017-05-12 17:55:13,880 INFO  [MaintainLog] All URLs on a page: 37 
+2017-05-12 17:55:15,768 INFO  [MaintainLog] Valid Link:   http://www.rcom.co.in/ 
